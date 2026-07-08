@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SnapRename (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SnapRename (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
