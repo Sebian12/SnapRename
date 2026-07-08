@@ -2,7 +2,7 @@
 
 A desktop application for batch renaming photos using EXIF metadata. Define a custom template like `{YYYY}-{MM}-{DD}_{label}_{###}` and rename hundreds of files in seconds. Part of the SnapPress ecosystem.
 
-![C++](https://img.shields.io/badge/C++-17-blue) ![Qt](https://img.shields.io/badge/Qt-6.x-green) ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey)
+![C#](https://img.shields.io/badge/C%23-12.0-blue) ![WinUI](https://img.shields.io/badge/WinUI-3-green) ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 
 ## Features
 
@@ -20,49 +20,25 @@ A desktop application for batch renaming photos using EXIF metadata. Define a cu
 
 ## Requirements
 
-- Qt 6.x
-- CMake 3.16+
-- C++17 compatible compiler (MSVC 2022 or GCC 11+)
+- Windows 10 version 1809 or later
+- [.NET 8.0 Runtime](https://dotnet.microsoft.com/download)
 
 ## Installation
 
 ### Windows
 
 1. Download the `.exe` installer from the current release
-
-### Linux
-
-1. Download the Linux binary from the current release
-2. Make it executable:
-```bash
-chmod +x SnapRename
-```
-3. Run:
-```bash
-./SnapRename
-```
-
-### Build from source (Windows, Linux)
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Sebian12/SnapRename.git
-cd SnapRename
-```
-
-2. Configure and build:
-```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-```
+2. Run the installer and follow the steps
+3. Launch SnapRename from the Start Menu or Desktop shortcut
 
 ## Usage
 
 1. Drag & drop photos onto the app or click **Select photos**
 2. Set your renaming template (e.g. `{YYYY}-{MM}-{DD}_{label}_{###}`)
-3. Preview the new filenames in the list
-4. Click **Rename and save**
-5. Renamed files are saved to the selected output folder — originals untouched
+3. Type a custom label if needed
+4. Preview the new filenames in the list
+5. Click **Rename and save**
+6. Renamed files are saved to the selected output folder — originals untouched
 
 ## Template tags
 
@@ -73,36 +49,39 @@ cmake --build build
 | `{DD}` | Day from EXIF | `04` |
 | `{label}` | Custom text label | `Albania` |
 | `{###}` | Auto-incrementing number | `001` |
-| `{cam}` | Camera model from EXIF | `Canon EOS 2000D` |
+| `{cam}` | Camera model from EXIF | `Canon_EOS_2000D` |
 
 ## Roadmap
 
-- [ ] Drag & drop support (0.1.0)
-- [ ] EXIF date reading (0.2.0)
-- [ ] Live template preview (0.2.0)
-- [ ] Output folder selection (0.3.0)
-- [ ] Rename engine with conflict handling (0.4.0)
-- [ ] Dark / light mode (0.5.0)
-- [ ] RAW file support — CR2, NEF (0.6.0)
-- [ ] Template history (0.7.0)
-- [ ] Windows installer (1.0.0)
-- [ ] Linux binary (1.0.0)
-- [ ] Android port (2.0.0)
+- [ ] Drag & drop photo selection (1.0.0)
+- [ ] EXIF date reading (1.0.0)
+- [ ] Live template preview (1.0.0)
+- [ ] Output folder selection (1.1.0)
+- [ ] Rename engine with conflict handling (1.2.0)
+- [ ] Dark / light mode following system theme (1.3.0)
+- [ ] RAW file support — CR2, NEF (1.4.0)
+- [ ] Template history — save and reuse templates (1.5.0)
+- [ ] Thumbnails in file list (1.6.0)
+- [ ] Windows installer (1.7.0)
+- [ ] Web version (2.0.0)
+- [ ] Linux version (2.0.0)
+- [ ] Android port (3.0.0)
 
 ## Tech stack
 
-- C++ 17
-- Qt 6 / QML — GUI
-- CMake — build system
-- libexif — EXIF metadata reading
+- C# 12
+- WinUI 3 — GUI
+- .NET 8
+- MetadataExtractor — EXIF reading
 
 ## Part of the SnapPress ecosystem
 
 | App | Platform | Language |
 |-----|----------|----------|
-| [SnapPress](https://github.com/Sebian12/SnapPress) | Windows / Linux | Python |
+| [SnapPress](https://github.com/Sebian12/SnapPress) | Windows / Linux / macOS | Python |
 | [SnapPress Android](https://github.com/Sebian12/SnapPress-Android) | Android | Kotlin |
-| SnapRename | Windows / Linux | C++ / Qt |
+| SnapRename | Windows | C# |
+| SnapRename Web | Browser | JavaScript |
 | SnapRename Android | Android | Kotlin |
 
 ## License
