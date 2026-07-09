@@ -31,6 +31,7 @@ namespace SnapRename
         {
             InitializeComponent();
             this.AppWindow.Resize(new Windows.Graphics.SizeInt32(600, 750));
+            this.AppWindow.SetIcon("Assets/logo.ico");
         }
 
         private async void DropZone_Tapped(object sender, TappedRoutedEventArgs e)
