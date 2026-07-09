@@ -14,6 +14,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -45,14 +47,23 @@ namespace SnapRename
             {
                 foreach (var file in files)
                 {
+                    var date = GetDateTaken(file.Path);
                     FileList.Items.Add(new PhotoFile
                     {
                         OldName = file.Name,
                         FullPath = file.Path,
-                        NewName = "preview..."
+                        DateTaken = date,
+                        NewName = date.HasValue ? date.Value.ToString("yyyy-MM-dd") : "no EXIF"
                     });
                 }
             }
+        }
+        private DateTime? GetDateTaken(string path)
+        {
+            var directories = ImageMetadataReader.ReadMetadata(path);
+            var subIfd = directories.OfType<ExifSubIfdDirectory>().FirstOrDefault();
+            var date = subIfd?.GetDateTime(ExifDirectoryBase.TagDateTimeOriginal);
+            return date;
         }
     }
 }
